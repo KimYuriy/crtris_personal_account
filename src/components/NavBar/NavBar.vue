@@ -52,7 +52,7 @@ export default {
                 { title: 'Мой профиль', path: '/' },
                 { title: 'Профиль куратора', path: '/curator' },
                 { title: 'Отчеты', path: '/'},
-                { title: 'Настройки', path: '/' }
+                // { title: 'Настройки', path: '/' }
             ],
             firstName: "Имя",
             secondName: "Фамилия",
