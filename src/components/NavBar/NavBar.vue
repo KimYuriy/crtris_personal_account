@@ -51,8 +51,8 @@ export default {
             options: [
                 { title: 'Мой профиль', path: '/' },
                 { title: 'Профиль куратора', path: '/curator' },
-                // { title: 'Отчеты', path: '/reports'},
-                // { title: 'Настройки', path: '/settings' }
+                { title: 'Отчеты', path: '/'},
+                { title: 'Настройки', path: '/' }
             ],
             firstName: "Имя",
             secondName: "Фамилия",
