@@ -31,7 +31,7 @@
                 <v-list>
                     <v-list-item
                         v-for="item in options"
-                        @click="console.log(item.path)"
+                        @click="$router.push(item.path)"
                     >
                         <v-list-item-title>
                             {{ item.title }}
@@ -50,8 +50,9 @@ export default {
         return {
             options: [
                 { title: 'Мой профиль', path: '/' },
-                { title: 'Отчеты', path: '/reports'},
-                { title: 'Настройки', path: '/settings' }
+                { title: 'Профиль куратора', path: '/curator' },
+                // { title: 'Отчеты', path: '/reports'},
+                // { title: 'Настройки', path: '/settings' }
             ],
             firstName: "Имя",
             secondName: "Фамилия",
