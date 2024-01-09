@@ -1,6 +1,6 @@
 # crtris_personal_account
 
-## Project setup
+## First of all:
 ```
 npm install
 ```
