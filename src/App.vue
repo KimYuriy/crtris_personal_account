@@ -9,10 +9,19 @@
 
 <script>
 import NavBar from '@/components/NavBar/NavBar.vue'
+import { mapMutations } from 'vuex'
 
 export default {
   components: {
     NavBar
+  },
+  methods: {
+    ...mapMutations({
+      setShownTasks: 'InternPageStore/setShownTasks'
+    })
+  },
+  created() {
+    this.setShownTasks()
   }
 }
 </script>

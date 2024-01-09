@@ -45,19 +45,25 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
     data() {
         return {
             options: [
                 { title: 'Мой профиль', path: '/' },
                 { title: 'Профиль куратора', path: '/curator' },
-                // { title: 'Отчеты', path: '/'},
-                // { title: 'Настройки', path: '/' }
-            ],
-            firstName: "Имя",
-            secondName: "Фамилия",
-            group: "000"
+                { title: 'Отчеты', path: '/'},
+                { title: 'Настройки', path: '/' }
+            ]
         }
+    },
+    computed: {
+        ...mapState({
+            firstName: state => state.InternPageStore.firstName,
+            secondName: state => state.InternPageStore.secondName,
+            group: state => state.InternPageStore.group,
+        })
     }
 }
 </script>
