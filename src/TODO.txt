@@ -1,0 +1,2 @@
+1. Custom & reusable v-menu
+2. Sort & filter for curator page
