@@ -77,6 +77,8 @@
 <script>
 import ShownTaskTable from '@/components/InternPage/ShownTasks/ShownTasksTable.vue'
 import CustomVMenu from '@/components/common/CustomVMenu.vue'
+import { TaskTypes } from '@/components/common/enums/TasksEnum'
+import { TaskStatuses } from '@/components/common/enums/TaskStatusesEnum'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
@@ -95,10 +97,10 @@ export default {
       ],
       selectedSortOption: ``,
       filterOptions: [
-        { name: `учебные проекты`, valueName: `type`, value: `Course` },
-        { name: `практические задачи`, valueName: `type`, value: `Task` },
-        { name: `статус WIP`, valueName: `status`, value: `WIP` },
-        { name: `статус Done`, valueName: `status`, value: `Done` },
+        { name: `учебные проекты`, valueName: `type`, value: TaskTypes.COURSE },
+        { name: `практические задачи`, valueName: `type`, value: TaskTypes.PRACTICAL_TASK },
+        { name: `статус WIP`, valueName: `status`, value: TaskStatuses.WIP },
+        { name: `статус Done`, valueName: `status`, value: TaskStatuses.DONE },
         { name: `выполненные задачи`, valueName: `expired`, value: false },
         { name: `просроченные задачи`, valueName: `expired`, value: true },
       ],
