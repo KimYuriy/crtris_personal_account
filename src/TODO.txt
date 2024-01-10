@@ -1,2 +1,1 @@
 1. Modal menu for intern's tasks
-2. Fix sorting for tasks (by value "type.type)

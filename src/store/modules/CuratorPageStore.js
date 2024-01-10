@@ -1,3 +1,5 @@
+import { Groups } from '@/components/common/enums/GroupsEnum.js'
+
 const CuratorPageStore = {
     namespaced: true,
     state: {
@@ -5,7 +7,7 @@ const CuratorPageStore = {
             {
                 id: 1,
                 name: `Ким Юрий Михайлович`,
-                group: 112,
+                group: Groups.GROUP_112,
                 department: `ОВП`,
                 medical: false,
                 vacation: true
@@ -13,7 +15,7 @@ const CuratorPageStore = {
             {
                 id: 2,
                 name: `Жуков Павел Юрьевич`,
-                group: 105,
+                group: Groups.GROUP_105,
                 department: `ДуТиБА`,
                 medical: true,
                 vacation: false
