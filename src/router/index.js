@@ -6,11 +6,11 @@ export default createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: `/`,
       component: InternPage
     },
     {
-      path: '/curator',
+      path: `/curator`,
       component: CuratorPage
     }
   ]

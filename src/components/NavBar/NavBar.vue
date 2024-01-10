@@ -51,10 +51,10 @@ export default {
     data() {
         return {
             options: [
-                { title: 'Мой профиль', path: '/' },
-                { title: 'Профиль куратора', path: '/curator' },
-                { title: 'Отчеты', path: '/'},
-                { title: 'Настройки', path: '/' }
+                { title: `Мой профиль`, path: `/` },
+                { title: `Профиль куратора`, path: `/curator` },
+                { title: `Отчеты`, path: `/`},
+                { title: `Настройки`, path: `/` }
             ]
         }
     },
