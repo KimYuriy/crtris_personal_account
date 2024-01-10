@@ -12,64 +12,37 @@
       <v-row
         class="ml-2"
       >
-        <v-text>
-          Сортировать по {{ selectedSortOption }}
-        </v-text>
-        <v-menu
-          :location="bottom"
+
+        <custom-v-menu
+          :classes="`ml-2`"
+          :title="`Сортировать по ${selectedSortOption}`"
         >
-          <template
-            v-slot:activator="{ props }"
+          <v-list-item
+            v-for="option in sortOptions" 
+            @click="sortBy(option)"
           >
-            <v-icon
-              v-bind="props"
-              icon="$vuetify"
-            >
-            </v-icon>
-          </template>
-          <v-list>
-            <v-list-item
-              v-for="option in sortOptions" 
-              @click="sortBy(option)"
-            >
-              {{ option.name }}
-            </v-list-item>
-          </v-list>
-        </v-menu>
+            {{ option.name }}
+          </v-list-item>
+        </custom-v-menu>
+
+        <custom-v-menu
+          :classes="`ml-5`"
+          :title="`Показать только ${selectedFilterOption}`"
+        >
+          <v-list-item
+            v-for="option in filterOptions" 
+            @click="filterBy(option)"
+          >
+            {{ option.name }}
+          </v-list-item>
+        </custom-v-menu>
 
         <v-text
-          class="ml-5"
-        >
-          Показать только {{ selectedFilterOption }}
-        </v-text>
-        <v-menu
-          :location="bottom"
-        >
-          <template
-            v-slot:activator="{ props }"
-          >
-            <v-icon
-              v-bind="props"
-              icon="$vuetify"
-            >
-            </v-icon>
-          </template>
-          <v-list>
-            <v-list-item
-              v-for="option in filterOptions" 
-              @click="filterBy(option)"
-            >
-              {{ option.name }}
-            </v-list-item>
-          </v-list>
-        </v-menu>
-
-        <v-btn
           v-if="isFiltered"
-          @click="resetFilters"
+          @click="resetAllFilters"
         >
           Сбросить фильтры
-        </v-btn>
+        </v-text>
       </v-row>
       <shown-task-table
         :tasks="tasks"
@@ -103,31 +76,33 @@
 
 <script>
 import ShownTaskTable from '@/components/InternPage/ShownTasks/ShownTasksTable.vue'
+import CustomVMenu from '@/components/common/CustomVMenu.vue'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
-    ShownTaskTable
+    ShownTaskTable,
+    CustomVMenu
   },
   data() {
     return {
       sortOptions: [
-        { name: "названию", value: "name"},
-        { name: "типу задачи", value: "type.type"},
-        { name: "статусу", value: "status"},
-        { name: "дате начала", value: "beginDate"},
-        { name: "статусу просрочки", value: "expired" },
+        { name: `названию`, value: `name`},
+        { name: `типу задачи`, value: `type.type`},
+        { name: `статусу выполнения`, value: `status`},
+        { name: `дате начала`, value: `beginDate` },
+        { name: `статусу просрочки`, value: `expired` },
       ],
-      selectedSortOption: "",
+      selectedSortOption: ``,
       filterOptions: [
-        { name: "учебные проекты", valueName: "type.type", value: "Course"},
-        { name: "практические задачи", valueName: "type.type", value: "Task" },
-        { name: "статус WIP", valueName: "status", value: "WIP"},
-        { name: "статус Done", valueName: "status", value: "Done" },
-        { name: "выполненные задачи", valueName: "expired", value: false },
-        { name: "просроченные задачи", valueName: "expired", value: true },
+        { name: `учебные проекты`, valueName: `type.type`, value: `Course` },
+        { name: `практические задачи`, valueName: `type.type`, value: `Task` },
+        { name: `статус WIP`, valueName: `status`, value: `WIP` },
+        { name: `статус Done`, valueName: `status`, value: `Done` },
+        { name: `выполненные задачи`, valueName: `expired`, value: false },
+        { name: `просроченные задачи`, valueName: `expired`, value: true },
       ],
-      selectedFilterOption: ""
+      selectedFilterOption: "",
     }
   },
   computed: {
@@ -142,9 +117,10 @@ export default {
   },
   methods: {
     ...mapMutations({
-      sortTasksBy: 'InternPageStore/sortTasksBy',
-      filterTasksBy: 'InternPageStore/filterTasksBy',
-      resetFilters: 'InternPageStore/resetFilters'
+      sortTasksBy: `InternPageStore/sortTasksBy`,
+      filterTasksBy: `InternPageStore/filterTasksBy`,
+      resetFilters: `InternPageStore/resetFilters`,
+      setShownTasks: `InternPageStore/setShownTasks`
     }),
     sortBy(option) {
       this.selectedSortOption = option.name
@@ -153,8 +129,14 @@ export default {
     filterBy(option) {
       this.selectedFilterOption = option.name
       this.filterTasksBy(option)
-      this.selectedFilterOption = ""
+    },
+    resetAllFilters() {
+      this.selectedFilterOption = ``
+      this.resetFilters()
     }
+  },
+  mounted() {
+    this.setShownTasks()
   }
 }
 </script>

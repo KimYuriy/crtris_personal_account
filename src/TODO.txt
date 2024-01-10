@@ -1,2 +1,1 @@
-1. Custom & reusable v-menu
-2. Sort & filter for curator page
+1. Modal menu for intern's tasks
