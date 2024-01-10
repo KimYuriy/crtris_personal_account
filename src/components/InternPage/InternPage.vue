@@ -88,15 +88,15 @@ export default {
     return {
       sortOptions: [
         { name: `названию`, value: `name`},
-        { name: `типу задачи`, value: `type.type`},
+        { name: `типу задачи`, value: `type`},
         { name: `статусу выполнения`, value: `status`},
         { name: `дате начала`, value: `beginDate` },
         { name: `статусу просрочки`, value: `expired` },
       ],
       selectedSortOption: ``,
       filterOptions: [
-        { name: `учебные проекты`, valueName: `type.type`, value: `Course` },
-        { name: `практические задачи`, valueName: `type.type`, value: `Task` },
+        { name: `учебные проекты`, valueName: `type`, value: `Course` },
+        { name: `практические задачи`, valueName: `type`, value: `Task` },
         { name: `статус WIP`, valueName: `status`, value: `WIP` },
         { name: `статус Done`, valueName: `status`, value: `Done` },
         { name: `выполненные задачи`, valueName: `expired`, value: false },
