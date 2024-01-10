@@ -1,11 +1,12 @@
 import { TaskTypes } from '@/components/common/enums/TasksEnum.js'
+import { TaskStatuses } from '@/components/common/enums/TaskStatusesEnum.js'
 
 const InternPageStore = {
     namespaced: true,
     state: {
         isFiltered: false,
-        firstName: `Имя`,
-        secondName: `Фамилия`,
+        firstName: `Ким`,
+        secondName: `Юрий`,
         group: 112,
         rating: 8,
 
@@ -14,7 +15,7 @@ const InternPageStore = {
               id: 1,
               name: `HEX-редактор`,
               type: TaskTypes.PRACTICAL_TASK,
-              status: `WIP`,
+              status: TaskStatuses.WIP,
               beginDate: `28.12.2023`,
               endDate: ``,
               expired: false
@@ -23,7 +24,7 @@ const InternPageStore = {
               id: 2,
               name: `Java - базовый курс`,
               type: TaskTypes.COURSE,
-              status: `Done`,
+              status: TaskStatuses.DONE,
               beginDate: `25.12.2023`,
               endDate: `27.12.2023`,
               expired: true
