@@ -12,7 +12,7 @@
                 {{ task.name }}
             </td>
             <td>
-                {{ task.type.name }}
+                {{ task.type }}
             </td>
             <td>
                 {{ task.status }}
