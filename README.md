@@ -1,5 +1,21 @@
 # crtris_personal_account
 
+## Run development server using Docker
+
+Собрать образ:
+
+```bash
+ docker build -t personal_account . 
+```
+
+Запустить контейнер:
+
+```bash
+docker run -p 8081:8081 personal_account
+```
+
+Сайт будет доступен по ссылке http://localhost:8081/
+
 ## First of all:
 ```
 npm install
