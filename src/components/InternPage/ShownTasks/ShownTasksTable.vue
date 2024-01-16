@@ -5,8 +5,8 @@
         <!-- @click - сюда прописать открытие модального окна -->
         <tr
             v-for="task in tasks"
-            :key="task.id"
             @click=""
+            :key="task.id"
         >
             <td>
                 {{ task.name }}
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import CustomTable from '@/components/common/CustomTable.vue'
+import CustomTable from '@/components/common/widgets/CustomTable.vue'
 
 export default {
     components: {

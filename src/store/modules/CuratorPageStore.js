@@ -21,7 +21,8 @@ const CuratorPageStore = {
                 vacation: false
             }
         ],
-        shownInterns: []
+        shownInterns: [],
+        isFiltered: false
     },
     mutations: {
         setShownInterns(state) {
@@ -37,6 +38,12 @@ const CuratorPageStore = {
                 }
                 return 0;
               })
+        },
+        filterInternsBy(state, option) {
+            state.shownInterns = state.allInterns.filter(intern => intern[option.valueName] === option.value)
+            if (!state.isFiltered) {
+                state.isFiltered = true
+            }
         }
     }
 }

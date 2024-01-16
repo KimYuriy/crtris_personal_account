@@ -8,13 +8,12 @@
           :location="bottom"
         >
           <template
-            v-slot:activator="{ props }"
+            #activator="{ props }"
           >
             <v-icon
               v-bind="props"
               icon="$vuetify"
-            >
-            </v-icon>
+            />
           </template>
           <v-list>
             <slot></slot>

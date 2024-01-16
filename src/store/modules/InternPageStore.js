@@ -49,7 +49,6 @@ const InternPageStore = {
       },
       filterTasksBy(state, option) {
         state.shownTasks = state.tasks.filter(task => task[option.valueName] === option.value)
-        console.log(state.tasks)
         if (!state.isFiltered) {
           state.isFiltered = true
         }

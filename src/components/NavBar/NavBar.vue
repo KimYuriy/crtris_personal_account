@@ -8,8 +8,7 @@
             <v-app-bar-title>
                 Личный кабинет стажера ЦРТРИС
             </v-app-bar-title>
-            <v-spacer>
-            </v-spacer>
+            <v-spacer />
             <v-text
                 class="mr-5"
             >
@@ -19,13 +18,12 @@
                 :location="bottom"
             >
                 <template
-                    v-slot:activator="{ props }"
+                    #activator="{ props }"
                 >
                     <v-btn
                         v-bind="props"
                         icon="$vuetify"
-                    >
-                    </v-btn>
+                    />
                 </template>
 
                 <v-list>

@@ -17,15 +17,13 @@
             </td>
             <td>
                 <v-checkbox-btn
-                    v-model="intern.medical"
-                >
-                </v-checkbox-btn>
+                    v-model="intern.vacation"
+                />
             </td>
             <td>
                 <v-checkbox-btn
-                    v-model="intern.vacation"
-                >
-                </v-checkbox-btn>
+                    v-model="intern.medical"
+                />
             </td>
             <td>
                 Посмотреть отчеты
@@ -35,7 +33,7 @@
 </template>
 
 <script>
-import CustomTable from '@/components/common/CustomTable.vue'
+import CustomTable from '@/components/common/widgets/CustomTable.vue'
 
 export default {
     components: {
