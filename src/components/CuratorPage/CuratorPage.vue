@@ -35,6 +35,14 @@
                     </v-list-item>
                 </custom-v-menu>
 
+                <v-text
+                    v-if="isFiltered"
+                    class="ml-5"
+                    @click="resetFilters"
+                >
+                    Очистить фильтры
+                </v-text>
+
             </v-row>
             <interns-table
                 :interns="interns"
@@ -82,7 +90,8 @@ export default {
         ...mapMutations({
             setShownInterns: `CuratorPageStore/setShownInterns`,
             sortInternsBy: `CuratorPageStore/sortInternsBy`,
-            filterInternsBy: `CuratorPageStore/filterInternsBy`
+            filterInternsBy: `CuratorPageStore/filterInternsBy`,
+            resetAllFilters: `CuratorPageStore/resetFilters`
         }),
         sortBy(option) {
             this.selectedSortOption = option.name
@@ -91,6 +100,11 @@ export default {
         filterBy(option) {
             this.selectedFilterOption = option.name
             this.filterInternsBy(option)
+        },
+        resetFilters() {
+            this.selectedFilterOption = ``
+            this.resetAllFilters()
+
         }
     },
     mounted() {

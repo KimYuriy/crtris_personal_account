@@ -1,3 +1,4 @@
+import { Groups } from '@/components/common/enums/GroupsEnum'
 import { TaskTypes } from '@/components/common/enums/TasksEnum.js'
 import { TaskStatuses } from '@/components/common/enums/TaskStatusesEnum.js'
 
@@ -7,7 +8,7 @@ const InternPageStore = {
         isFiltered: false,
         firstName: `Ким`,
         secondName: `Юрий`,
-        group: 112,
+        group: Groups.GROUP_112.number,
         rating: 8,
 
         tasks: [

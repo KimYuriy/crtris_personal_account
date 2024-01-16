@@ -7,16 +7,16 @@ const CuratorPageStore = {
             {
                 id: 1,
                 name: `Ким Юрий Михайлович`,
-                group: Groups.GROUP_112,
-                department: `ОВП`,
+                group: Groups.GROUP_112.number,
+                department: Groups.GROUP_112.dept,
                 medical: false,
                 vacation: true
             },
             {
                 id: 2,
                 name: `Жуков Павел Юрьевич`,
-                group: Groups.GROUP_105,
-                department: `ДуТиБА`,
+                group: Groups.GROUP_105.number,
+                department: Groups.GROUP_105.dept,
                 medical: true,
                 vacation: false
             }
@@ -44,6 +44,10 @@ const CuratorPageStore = {
             if (!state.isFiltered) {
                 state.isFiltered = true
             }
+        },
+        resetFilters(state) {
+            state.shownInterns = state.allInterns
+            state.isFiltered = false
         }
     }
 }

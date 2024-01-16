@@ -1,4 +1,10 @@
 export const Groups = {
-    GROUP_105: 105,
-    GROUP_112: 112
+    GROUP_105: {
+        number: 105,
+        dept: `ДуТИбА`
+    },
+    GROUP_112: {
+        number: 112,
+        dept: `ОВП`
+    }
 }
