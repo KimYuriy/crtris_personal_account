@@ -6,15 +6,17 @@
             color="green"
         >
             <v-app-bar-title>
-                Личный кабинет стажера ЦРТРИС
+                Личный кабинет {{ $route.path === `/curator`? `куратора` : `стажера` }} ЦРТРИС
             </v-app-bar-title>
             <v-spacer />
             <v-text
+                v-if="$route.path !== `/`"
                 class="mr-5"
             >
-                {{ firstName }} {{ secondName }} №{{ group }}
+                {{ firstName }} {{ secondName }} №{{ group.number }}
             </v-text>
             <v-menu
+                v-if="$route.path !== `/`"
                 :location="bottom"
             >
                 <template
@@ -49,18 +51,20 @@ export default {
     data() {
         return {
             options: [
-                { title: `Мой профиль`, path: `/` },
+                { title: `Профиль стажера`, path: `/intern` },
                 { title: `Профиль куратора`, path: `/curator` },
-                { title: `Отчеты`, path: `/`},
-                { title: `Настройки`, path: `/` }
+                { title: `Отчеты`, path: `/intern`},
+                { title: `Настройки`, path: `/intern` },
+                { title: `Выйти из аккаунта`, path: `/` }
             ]
         }
     },
     computed: {
         ...mapState({
-            firstName: state => state.InternPageStore.firstName,
-            secondName: state => state.InternPageStore.secondName,
-            group: state => state.InternPageStore.group,
+            firstName: state => state.UserStore.firstName,
+            secondName: state => state.UserStore.secondName,
+            group: state => state.UserStore.group,
+            role: state => state.UserStore.role
         })
     }
 }

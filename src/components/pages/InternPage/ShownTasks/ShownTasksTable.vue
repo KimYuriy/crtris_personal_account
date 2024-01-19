@@ -2,12 +2,16 @@
     <custom-table
         :header="header"
     >
-        <!-- @click - сюда прописать открытие модального окна -->
         <tr
             v-for="task in tasks"
-            @click=""
             :key="task.id"
         >
+            <custom-modal-menu 
+                :activator="`parent`"
+                :taskData="task"
+            >
+                
+            </custom-modal-menu>
             <td>
                 {{ task.name }}
             </td>
@@ -32,10 +36,12 @@
 
 <script>
 import CustomTable from '@/components/common/widgets/CustomTable.vue'
+import CustomModalMenu from '@/components/common/widgets/CustomModalMenu.vue'
 
 export default {
     components: {
-        CustomTable
+        CustomTable,
+        CustomModalMenu
     },
     props: {
         tasks: {
@@ -54,6 +60,7 @@ export default {
                 `Просрочено`
             ]
         }
-    }
+    },
+    emits: [`showTaskInfo`]
 }
 </script>

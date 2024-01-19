@@ -6,5 +6,9 @@ export const Groups = {
     GROUP_112: {
         number: 112,
         dept: `ОВП`
+    },
+    GROUP_DEFAULT: {
+        number: -1,
+        dept: `Отдел по умолчанию`
     }
 }

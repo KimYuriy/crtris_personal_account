@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import InternsTable from '@/components/CuratorPage/Interns/InternsTable.vue'
+import InternsTable from '@/components/pages/CuratorPage/Interns/InternsTable.vue'
 import CustomVMenu from '@/components/common/widgets/CustomVMenu.vue'
 import { mapState, mapMutations } from 'vuex'
 

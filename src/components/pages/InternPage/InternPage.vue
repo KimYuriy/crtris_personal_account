@@ -14,7 +14,7 @@
       >
 
         <custom-v-menu
-          :classes="`ml-2`"
+          :classes="`ml-2 mb-2`"
           :title="`Сортировать по ${selectedSortOption}`"
         >
           <v-list-item
@@ -26,7 +26,7 @@
         </custom-v-menu>
 
         <custom-v-menu
-          :classes="`ml-5`"
+          :classes="`ml-5 mb-2`"
           :title="`Показать только ${selectedFilterOption}`"
         >
           <v-list-item
@@ -45,6 +45,7 @@
         </v-text>
       </v-row>
       <shown-task-table
+        @showTaskInfo="showTaskInfo"
         :tasks="tasks"
       />
     </v-col>
@@ -59,7 +60,7 @@
       <v-text
         class="d-flex justify-center"
       >
-        {{ firstName }} {{ secondName }}, группа {{ group }}
+        {{ firstName }} {{ secondName }}, группа {{ group.number }}
       </v-text>
       <v-container>
         <v-text
@@ -74,7 +75,7 @@
 </template>
 
 <script>
-import ShownTaskTable from '@/components/InternPage/ShownTasks/ShownTasksTable.vue'
+import ShownTaskTable from '@/components/pages/InternPage/ShownTasks/ShownTasksTable.vue'
 import CustomVMenu from '@/components/common/widgets/CustomVMenu.vue'
 import { TaskTypes } from '@/components/common/enums/TasksEnum'
 import { TaskStatuses } from '@/components/common/enums/TaskStatusesEnum'
@@ -109,11 +110,11 @@ export default {
   computed: {
     ...mapState({
       tasks: state => state.InternPageStore.shownTasks,
-      firstName: state => state.InternPageStore.firstName,
-      secondName: state => state.InternPageStore.secondName,
-      group: state => state.InternPageStore.group,
-      rating: state => state.InternPageStore.rating,
-      isFiltered: state => state.InternPageStore.isFiltered
+      isFiltered: state => state.InternPageStore.isFiltered,
+      firstName: state => state.UserStore.firstName,
+      secondName: state => state.UserStore.secondName,
+      group: state => state.UserStore.group,
+      rating: state => state.UserStore.rating
     })
   },
   methods: {
@@ -134,6 +135,9 @@ export default {
     resetAllFilters() {
       this.selectedFilterOption = ``
       this.resetFilters()
+    },
+    showTaskInfo(taskId) {
+      const task = this.tasks.find((task) => task.id === taskId)
     }
   },
   mounted() {
