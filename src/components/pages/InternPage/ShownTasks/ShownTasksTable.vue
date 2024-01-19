@@ -10,7 +10,9 @@
                 :activator="`parent`"
                 :taskData="task"
             >
-                
+                <task-modal-menu 
+                    :task="task"
+                />
             </custom-modal-menu>
             <td>
                 {{ task.name }}
@@ -37,12 +39,14 @@
 <script>
 import CustomTable from '@/components/common/widgets/CustomTable.vue'
 import CustomModalMenu from '@/components/common/widgets/CustomModalMenu.vue'
+import TaskModalMenu from '@/components/pages/InternPage/ShownTasks/TaskModalMenu.vue'
 
 export default {
     components: {
-        CustomTable,
-        CustomModalMenu
-    },
+    CustomTable,
+    CustomModalMenu,
+    TaskModalMenu
+},
     props: {
         tasks: {
             type: Array,
