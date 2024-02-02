@@ -1,10 +1,10 @@
 <template>
   <v-row>
     <v-col
-      sm="9"
+      cols="9"
       class="d-flex flex-column"
     >
-      <v-text class="d-flex justify-center mb-2">
+      <v-text class="d-flex justify-center mb-5">
         СВОДКА
       </v-text>
       <v-row class="ml-2">
@@ -45,7 +45,7 @@
 
     <v-col
       class="d-flex justify-center flex-column"
-      sm="3"
+      cols="2"
     >
       <v-img src="@/assets/person.jpg" />
       <v-text class="d-flex justify-center">

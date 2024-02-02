@@ -1,9 +1,9 @@
 <template>
-    <v-text class="d-flex justify-center">
+    <v-text class="d-flex justify-center mb-5">
         Список закрепленных стажеров
     </v-text>
     <v-row>
-        <v-col sm="10">
+        <v-col>
             <v-row class="ml-2">
                 <custom-v-menu
                     :classes="`ml-2 mb-2`"
