@@ -8,18 +8,14 @@
     </v-dialog>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            dialog: false
-        }
-    },
-    props: {
-        activator: {
-            type: String,
-            required: true
-        }
+<script setup>
+import { ref } from 'vue'
+
+const props = defineProps({
+    activator: {
+        type: String,
+        required: true
     }
-}
+})
+const dialog = ref(false)
 </script>

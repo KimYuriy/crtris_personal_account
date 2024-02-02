@@ -13,7 +13,8 @@ const InternPageStore = {
               status: TaskStatuses.WIP,
               beginDate: `28.12.2023`,
               endDate: ``,
-              expired: false
+              expired: false,
+              url: `https://somelink.ru`
             },
             {
               id: 2,
@@ -22,7 +23,8 @@ const InternPageStore = {
               status: TaskStatuses.DONE,
               beginDate: `25.12.2023`,
               endDate: `27.12.2023`,
-              expired: true
+              expired: true,
+              url: `https://somelink.ru`
             }
         ],
         shownTasks: []

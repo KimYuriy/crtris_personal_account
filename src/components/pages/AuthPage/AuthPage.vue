@@ -3,9 +3,7 @@
         class="mx-auto"
         max-width="500"
     >
-        <v-text
-            class="d-flex justify-center mt-5"
-        >
+        <v-text class="d-flex justify-center mt-5">
             Авторизация в аккаунте стажера ЦРТРИС
         </v-text>
         <v-form

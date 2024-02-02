@@ -7,12 +7,6 @@
   </v-app>
 </template>
 
-<script>
+<script setup>
 import NavBar from '@/components/NavBar/NavBar.vue'
-
-export default {
-  components: {
-    NavBar
-  }
-}
 </script>

@@ -1,7 +1,5 @@
 <template>
-    <custom-table
-        :header="header"
-    >
+    <custom-table :header="header">
         <tr
             v-for="task in tasks"
             :key="task.id"
@@ -10,61 +8,37 @@
                 :activator="`parent`"
                 :taskData="task"
             >
-                <task-modal-menu 
-                    :task="task"
-                />
+                <task-modal-menu :task="task" />
             </custom-modal-menu>
-            <td>
-                {{ task.name }}
-            </td>
-            <td>
-                {{ task.type }}
-            </td>
-            <td>
-                {{ task.status }}
-            </td>
-            <td>
-                {{ task.beginDate }}
-            </td>
-            <td>
-                {{ task.endDate }}
-            </td>
-            <td>
-                {{ task.expired === true? `Да` : `Нет` }}
-            </td>
+            <td> {{ task.name }} </td>
+            <td> {{ task.type }} </td>
+            <td> {{ task.status }} </td>
+            <td> {{ task.beginDate }} </td>
+            <td> {{ task.endDate }} </td>
+            <td> {{ task.expired === true? `Да` : `Нет` }} </td>
         </tr>
     </custom-table>
 </template>
 
-<script>
+<script setup>
 import CustomTable from '@/components/common/widgets/CustomTable.vue'
 import CustomModalMenu from '@/components/common/widgets/CustomModalMenu.vue'
 import TaskModalMenu from '@/components/pages/InternPage/ShownTasks/TaskModalMenu.vue'
+import { ref } from 'vue'
 
-export default {
-    components: {
-    CustomTable,
-    CustomModalMenu,
-    TaskModalMenu
-},
-    props: {
-        tasks: {
-            type: Array,
-            required: true
-        }
-    },
-    data() {
-        return {
-            header: [
-                `Название`,
-                `Тип`,
-                `Статус`,
-                `Дата начала`,
-                `Дата окончания`,
-                `Просрочено`
-            ]
-        }
-    },
-    emits: [`showTaskInfo`]
-}
+const props = defineProps({
+    tasks: {
+        type: Array,
+        required: true
+    }
+})
+
+const header = ref([
+    `Название`,
+    `Тип`,
+    `Статус`,
+    `Дата начала`,
+    `Дата окончания`,
+    `Просрочено`
+])
 </script>

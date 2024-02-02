@@ -1,16 +1,10 @@
 <template>
-    <v-text
-        class="d-flex justify-center"
-    >
+    <v-text class="d-flex justify-center">
         Список закрепленных стажеров
     </v-text>
     <v-row>
-        <v-col
-            sm="10"
-        >
-            <v-row
-                class="ml-2"
-            >
+        <v-col sm="10">
+            <v-row class="ml-2">
                 <custom-v-menu
                     :classes="`ml-2 mb-2`"
                     :title="`Сортировать по ${selectedSortOption}`"
@@ -44,71 +38,55 @@
                 </v-text>
 
             </v-row>
-            <interns-table
-                :interns="interns"
-            />
+            <interns-table :interns="interns" />
         </v-col>
     </v-row>
 </template>
 
-<script>
+<script setup>
 import InternsTable from '@/components/pages/CuratorPage/Interns/InternsTable.vue'
 import CustomVMenu from '@/components/common/widgets/CustomVMenu.vue'
-import { mapState, mapMutations } from 'vuex'
+import { useStore } from 'vuex'
+import { onMounted, ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 
-export default {
-    components: {
-        InternsTable,
-        CustomVMenu
-    },
-    data() {
-        return {
-            sortOptions: [
-                { name: `ФИО`, value: `name` },
-                { name: `группе`, value: `group` },
-                { name: `отделу`, value: `department` },
-                { name: `отпуску`, value: `vacation` },
-                { name: `больничному`, value: `medical` },
-            ],
-            selectedSortOption: ``,
-            filterOptions: [
-                { name: `тех, кто в отпуске`, valueName: `vacation`, value: true },
-                { name: `тех, кто не в отпуске`, valueName: `vacation`, value: false },
-                { name: `тех, кто на больничном`, valueName: `medical`, value: true },
-                { name: `тех, кто не на больничном`, valueName: `medical`, value: false }
-            ],
-            selectedFilterOption: ``
-        }
-    },
-    computed: {
-        ...mapState({
-            interns: state => state.CuratorPageStore.shownInterns,
-            isFiltered: state => state.CuratorPageStore.isFiltered
-        })
-    },
-    methods: {
-        ...mapMutations({
-            setShownInterns: `CuratorPageStore/setShownInterns`,
-            sortInternsBy: `CuratorPageStore/sortInternsBy`,
-            filterInternsBy: `CuratorPageStore/filterInternsBy`,
-            resetAllFilters: `CuratorPageStore/resetFilters`
-        }),
-        sortBy(option) {
-            this.selectedSortOption = option.name
-            this.sortInternsBy(option.value)
-        },
-        filterBy(option) {
-            this.selectedFilterOption = option.name
-            this.filterInternsBy(option)
-        },
-        resetFilters() {
-            this.selectedFilterOption = ``
-            this.resetAllFilters()
+const sortOptions = ref([
+    { name: `ФИО`, value: `name` },
+    { name: `группе`, value: `group` },
+    { name: `отделу`, value: `department` },
+    { name: `отпуску`, value: `vacation` },
+    { name: `больничному`, value: `medical` }
+])
+const filterOptions = ref([
+    { name: `тех, кто в отпуске`, valueName: `vacation`, value: true },
+    { name: `тех, кто не в отпуске`, valueName: `vacation`, value: false },
+    { name: `тех, кто на больничном`, valueName: `medical`, value: true },
+    { name: `тех, кто не на больничном`, valueName: `medical`, value: false }
+])
+const selectedSortOption = ref(``)
+const selectedFilterOption = ref(``)
+const router = useRouter()
+const store = useStore()
 
-        }
-    },
-    mounted() {
-        this.setShownInterns()
-    }
+const interns = computed(() => store.state.CuratorPageStore.shownInterns)
+const isFiltered = computed(() => store.state.CuratorPageStore.isFiltered)
+
+const sortBy = (option) => {
+    selectedSortOption.value = option.name
+    store.commit(`CuratorPageStore/sortInternsBy`, option.value)
 }
+
+const filterBy = (option) => {
+    selectedFilterOption.value = option.name
+    store.commit(`CuratorPageStore/filterInternsBy`, option)
+}
+
+const resetFilters = () => {
+    selectedFilterOption.value = ``
+    store.commit(`CuratorPageStore/resetFilters`)
+}
+
+onMounted(() => {
+    store.commit(`CuratorPageStore/setShownInterns`)
+})
 </script>

@@ -1,7 +1,5 @@
 <template>
-    <v-card
-        class="px-3 py-2"
-    >
+    <v-card class="px-3 py-2">
         <v-card-title>
             {{ task.name }} - {{ task.type }}
         </v-card-title>
@@ -15,18 +13,16 @@
             Статус: {{ task.status }}
         </v-text>
         <v-text>
-            Ссылка на задачу: <a :href="`https://somelink.ru`">{{ `https://somelink.ru` }}</a>
+            Ссылка на задачу: <a :href="task.url">{{ task.url }}</a>
         </v-text>
     </v-card>
 </template>
 
-<script>
-export default {
-    props: {
-        task: {
-            type: Object,
-            required: true
-        }
+<script setup>
+const props = defineProps({
+    task: {
+        type: Object,
+        required: true
     }
-}
+})
 </script>

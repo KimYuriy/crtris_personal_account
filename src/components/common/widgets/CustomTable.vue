@@ -19,13 +19,12 @@
         </tbody>
     </v-table>
 </template>
-<script>
-export default {
-    props: {
-        header: {
-            type: Array,
-            required: true
-        }
+
+<script setup>
+const props = defineProps({
+    header: {
+        type: Array,
+        required: true
     }
-}
+})
 </script>
