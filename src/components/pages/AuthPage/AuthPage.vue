@@ -42,40 +42,32 @@
     </v-card>
 </template>
 
-<script>
-import { mapMutations } from 'vuex'
+<script setup>
 import { Groups } from '@/components/common/enums/GroupsEnum'
 import { Roles } from "@/components/common/enums/RolesEnum"
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
-export default {
-    data() {
-        return {
-            login: ``,
-            password: ``,
-            form: false
-        }
-    },
-    methods: {
-        ...mapMutations({
-            setUserData: `UserStore/setUserData`
-        }),
-        authorize() {
-            // Тут будет запрос на сервер на получение данных пользователя. В запросе передать login и password
-            const userData = {
-                firstName: `Юрий`,
-                secondName: `Ким`,
-                group: Groups.GROUP_112,
-                rating: 10.5,
-                role: Roles.ROLE_CURATOR
-            }
-            this.setUserData(userData)
-            this.login = ``
-            this.password = ``
-            this.$router.push(`/intern`)
-        },
-        required(v) {
-            return !!v || `Обязательно!`
-        }
+const store = useStore()
+const router = useRouter()
+const login = ref(``)
+const password = ref(``)
+const form = ref(false)
+
+const authorize = () => {
+    const userData = {
+        firstName: `Юрий`,
+        secondName: `Ким`,
+        group: Groups.GROUP_112,
+        rating: 10.5,
+        role: Roles.ROLE_CURATOR
     }
+    store.commit(`UserStore/setUserData`, userData)
+    login.value = ``
+    password.value = ``
+    router.push(`/intern`)
 }
+
+const required = (v) => !!v || `Обязательно!`
 </script>
